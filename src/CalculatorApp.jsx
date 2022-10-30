@@ -1,9 +1,10 @@
 import React from "react";
+import CalculatorTitle from "./components/CalculatroTitle/CalculatorTitle";
 
 function CalculatorApp(){
-    return<>
-    <h1>calculatorApp</h1>
-    </>
+    return<div className="calculator-container">
+        <CalculatorTitle/>
+    </div>
 }
 
 export default CalculatorApp;
