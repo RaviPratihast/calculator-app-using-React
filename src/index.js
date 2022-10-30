@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
+import CalculatorApp from './CalculatorApp';
 // import reportWebVitals from './reportWebVitals';
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -11,4 +11,4 @@ import './index.css';
 //   </React.StrictMode>
 // );
 
-ReactDOM.render(<h1>hello,world</h1>,document.getElementById("root"));
+ReactDOM.render( <CalculatorApp/>,document.getElementById("root"));
