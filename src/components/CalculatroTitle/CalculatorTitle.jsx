@@ -1,9 +1,10 @@
 import React from "react";
+import "./CalculatorTitle.css"
 
 
 function CalculatorTitle(){
     return <>
-        <header><h1>
+        <header className="calculator-title-container"><h1>
         Easycalculator
         </h1></header>
     </>
