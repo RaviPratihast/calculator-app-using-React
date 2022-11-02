@@ -8,17 +8,13 @@ import CalculatorButton from "./components/CalculatorButton/CalculatorButton";
 function CalculatorApp(){
 
      const [current,setCurrent]=useState("")
-     // const clearingActionsFunc=[deleteFunc]
      const operators=["+","-","/","*","."];
 
-     // function deleteFunc(){
-     //      current.slice(0,current.length-1);
-     // }
-
+   
      function showOnTheScreen(value){
           // console.log(value);
           if( value==="Clear"){
-               // return null;
+               
                setCurrent("");
           }else if(value==="Delete"){
              setCurrent(current.slice(0,-1));
@@ -36,7 +32,7 @@ function CalculatorApp(){
     return<div className="calculator-container">
         <Calculatortitle />
         <CalculatorScreen addResult={current}/>
-        {/* <CalculatorScreen /> */}
+      
 
        <div className="button-container" >
            <div className="button button-row-1">
