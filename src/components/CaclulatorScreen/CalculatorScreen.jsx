@@ -3,10 +3,11 @@ import "./Calculatorscreen.css"
 
 function CalculatorScreen(props){
     return <div className="calculator-screen-container">
-     {props.addCurrent}
-     {props.addOperator}
-     {props.addPrevious}
-    <span>{props.addResult}</span>
+           <span>{props.addHistory}</span>
+            {props.addCurrent}
+            {props.addOperator}
+            {props.addPrevious}
+           <span> {props.addResult}</span>
      
     </div>
 }
