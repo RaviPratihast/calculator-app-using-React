@@ -3,16 +3,36 @@ import Calculatortitle from "./components/CalculatroTitle/CalculatorTitle";
 import "./CalculatorApp.css";
 import CalculatorScreen from "./components/CaclulatorScreen/CalculatorScreen";
 import CalculatorButton from "./components/CalculatorButton/CalculatorButton";
+import { set } from "lodash";
 
 function CalculatorApp(){
 
      const [current,setCurrent]=useState("")
-     
+     // const clearingActionsFunc=[deleteFunc]
+     const operators=["+","-","/","*","."];
+
+     // function deleteFunc(){
+     //      current.slice(0,current.length-1);
+     // }
 
      function showOnTheScreen(value){
           // console.log(value);
-          setCurrent(current+value);
+          if( value==="Clear"){
+               // return null;
+               setCurrent("");
+          }else if(value==="Delete"){
+             setCurrent(current.slice(0,-1));
+          }else if(operators.includes(value)){
+               return null;
+          }else if(value==="="){
+               return null;
+          }else{
+               setCurrent(current+value);
+          }
+          
      }
+
+     console.log(current)
     return<div className="calculator-container">
         <Calculatortitle />
         <CalculatorScreen addResult={current}/>
