@@ -7,31 +7,66 @@ import CalculatorButton from "./components/CalculatorButton/CalculatorButton";
 
 function CalculatorApp(){
 
-     const [current,setCurrent]=useState("")
+     const [current,setCurrent]=useState("");
+     const [previous, setPrevious]=useState("");
+     const [operator,setOperator]=useState("");
+     const [result,setResult]=useState("");
      const operators=["+","-","/","*","."];
+     const numberArr=['1','2','3','4','5','6','7','8','9','0'];
+
+     function operationFunc(curr,pre,oper){
+          // console.log("current:",curr);
+          // console.log("previous:",pre);
+          // console.log("operator:",oper);
+          const newCurr=Number(curr);
+          const newPre=Number(pre);
+          // console.log("newCurr:",newCurr);
+          // console.log("newPre:",newPre);
+
+          if(oper==="+"){
+               return newCurr+newPre;
+          }else if(oper==="-"){
+               return newCurr - newPre;
+          }else if(oper==="*"){
+               return newCurr * newPre;
+          }else if(oper==="/"){
+              return  newCurr / newPre;
+          }
+     }
 
    
      function showOnTheScreen(value){
-          // console.log(value);
+         
           if( value==="Clear"){
                
                setCurrent("");
+               setPrevious("");
+               setOperator("");
+               setResult("");
+
           }else if(value==="Delete"){
-             setCurrent(current.slice(0,-1));
+               return null;
+          }else if(numberArr.includes(value)){
+               if(operator===""){
+                    setCurrent(current+value);
+               }else if(operator!==""){
+                    setPrevious(previous+value);
+               }
+              
           }else if(operators.includes(value)){
-               return null;
-          }else if(value==="="){
-               return null;
-          }else{
-               setCurrent(current+value);
+               setOperator(operator+value);
+              
+          } else if(value==="="){
+               setResult(result+(operationFunc(current,previous,operator)));
           }
           
      }
 
-     console.log(current)
+    
+    
     return<div className="calculator-container">
         <Calculatortitle />
-        <CalculatorScreen addResult={current}/>
+        <CalculatorScreen addCurrent={current} addPrevious={previous} addOperator={operator} addResult={result}/>
       
 
        <div className="button-container" >
