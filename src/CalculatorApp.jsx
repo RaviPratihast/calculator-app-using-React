@@ -11,6 +11,7 @@ function CalculatorApp(){
      const [previous, setPrevious]=useState("");
      const [operator,setOperator]=useState("");
      const [result,setResult]=useState("");
+     const [history,setHistory]=useState("");
      const operators=["+","-","/","*","."];
      const numberArr=['1','2','3','4','5','6','7','8','9','0'];
 
@@ -43,6 +44,7 @@ function CalculatorApp(){
                setPrevious("");
                setOperator("");
                setResult("");
+               setHistory("")
 
           }else if(value==="Delete"){
                return null;
@@ -54,23 +56,24 @@ function CalculatorApp(){
                }
               
           }else if(operators.includes(value)){
-               setOperator(operator+value);
+               // setOperator(operator+value);
+               if(operator===""){
+                    setOperator(operator+value)
+               }
               
           } else if(value==="="){
-               // setResult(result+(operationFunc(current,previous,operator)));
-               // setResult(pre=>{
-               //      if(operationFunc(current,previous,operator)==="undefined"){
-               //           return "Malformed Expression";
-               //      }else{
-               //           operationFunc(current,previous,operator)
-               //      }
-               // })
-
+             
                const totalValue=operationFunc(current,previous,operator);
                if(totalValue===undefined){
                     setResult(result+"Malformed Expression");
                }else{
                     setResult(result+totalValue);
+                    // setCurrent(current+result);
+                    // setHistory(history+current+operator+previous);
+                    // setCurrent(result);
+                    // setOperator("");
+                    // setPrevious("")
+
                }
           }
           
@@ -80,7 +83,8 @@ function CalculatorApp(){
     
     return<div className="calculator-container">
         <Calculatortitle />
-        <CalculatorScreen addCurrent={current} addPrevious={previous} addOperator={operator} addResult={result}/>
+      
+        <CalculatorScreen addHistory={history} addCurrent={current} addPrevious={previous} addOperator={operator} addResult={result}/>
       
 
        <div className="button-container" >
