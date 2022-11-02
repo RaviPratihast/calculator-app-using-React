@@ -57,7 +57,21 @@ function CalculatorApp(){
                setOperator(operator+value);
               
           } else if(value==="="){
-               setResult(result+(operationFunc(current,previous,operator)));
+               // setResult(result+(operationFunc(current,previous,operator)));
+               // setResult(pre=>{
+               //      if(operationFunc(current,previous,operator)==="undefined"){
+               //           return "Malformed Expression";
+               //      }else{
+               //           operationFunc(current,previous,operator)
+               //      }
+               // })
+
+               const totalValue=operationFunc(current,previous,operator);
+               if(totalValue===undefined){
+                    setResult(result+"Malformed Expression");
+               }else{
+                    setResult(result+totalValue);
+               }
           }
           
      }
